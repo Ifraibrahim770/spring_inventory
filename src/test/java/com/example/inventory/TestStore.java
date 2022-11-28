@@ -36,7 +36,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest(classes = InventoryApplication.class)
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = {ItemService.class, ItemController.class,ItemRepository.class})
-public class StoreTest {
+public class TestStore {
 
     @MockBean
     @Autowired
