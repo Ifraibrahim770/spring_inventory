@@ -1,6 +1,8 @@
 package com.example.inventory.Item;
 
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +24,10 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-
+    @Operation(
+            summary = "Add",
+            description = "Add Items to Store Recieved From Vendor"
+    )
     @PostMapping("/add")
     public ResponseEntity<String> saveItem(@Valid @RequestBody Item item){
         itemService.saveItemToStore(item);
@@ -30,6 +35,10 @@ public class ItemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
+    @Operation(
+            summary = "Add Multiple",
+            description = "Adds Multiple Items to Store"
+    )
     @PostMapping("/add/multiple")
     public ResponseEntity<String> saveListOfItems(@Valid @RequestBody List<Item> itemList){
         itemList.forEach(item -> itemService.saveItemToStore(item));
@@ -37,11 +46,20 @@ public class ItemController {
         return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
+    @Operation(
+            summary = "List All Items",
+            description = "Returns a List of all items Added to Store"
+    )
     @GetMapping("/all")
     public ResponseEntity<List<Item>>getAllItems(){
         return ResponseEntity.status(HttpStatus.OK).body(itemService.retrieveAllItems());
     }
 
+
+    @Operation(
+            summary = "Edit Item",
+            description = "Allows Editing of Items Already Passed to Store"
+    )
     @PostMapping("/edit")
     public ResponseEntity<String> editItem(@Valid @RequestBody Item item){
 
@@ -57,6 +75,12 @@ public class ItemController {
         String message = item.getName() + " ID:" + item.getItemId() + " updated successfully";
         return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
+
+
+    @Operation(
+            summary = "Edit Multiple",
+            description = "Allows Editing of multiple Items to Store"
+    )
 
     @PostMapping("/edit/multiple")
     public ResponseEntity<String> editListOfItems(@Valid @RequestBody List<Item> itemList){
@@ -80,7 +104,10 @@ public class ItemController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(updateCount+ " items updated "+failedItems +" failed");
     }
-
+    @Operation(
+            summary = "Delete Items",
+            description = "Allows Deletion of Single Items"
+    )
     @PostMapping("/delete")
     public ResponseEntity<String> deleteItem(@RequestBody HashMap<String, String> requestData){
         Long itemID = Long.valueOf(requestData.get("id"));
@@ -92,7 +119,10 @@ public class ItemController {
         String message = itemToBeDeleted.getName() + " ID:" + itemToBeDeleted.getItemId() + " deleted successfully";
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
-
+    @Operation(
+            summary = "Delete Multiple Items",
+            description = "Allows Deletion of Multiple Items"
+    )
     @PostMapping("/delete/multiple")
     public ResponseEntity<String> deleteMultipleItems(@RequestBody List<HashMap<String, String>> requestData){
         int deleteCount = 0;
@@ -113,12 +143,18 @@ public class ItemController {
 
         return ResponseEntity.status(HttpStatus.OK).body(deleteCount+ " items deleted "+failedItems +" failed");
     }
-
+    @Operation(
+            summary = "Today",
+            description = "Returns All Items Added Today"
+    )
     @GetMapping("/today")
     public ResponseEntity<List<Item>> getItemsAddedToday() throws ParseException {
         return ResponseEntity.status(HttpStatus.OK).body(itemService.retrieveAllItemsCreatedToday());
     }
-
+    @Operation(
+            summary = "Last Week",
+            description = "Returns All Items Added Within the Last Week"
+    )
     @GetMapping("/last/week")
     public ResponseEntity<List<Item>> getItemsAddedLastOneWeek() throws ParseException {
         return ResponseEntity.status(HttpStatus.OK).body(itemService.retrieveAllItemsCreatedLastOneWeek());

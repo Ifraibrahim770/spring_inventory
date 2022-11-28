@@ -3,6 +3,7 @@ package com.example.inventory.Vendor;
 
 import com.example.inventory.Item.Item;
 import com.example.inventory.Item.ItemRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,11 @@ public class VendorController {
     @Autowired
     private VendorService vendorService;
 
+
+    @Operation(
+            summary = "Returns item to vendor",
+            description = "Allows the return of items to vendors"
+    )
     @PostMapping("/return/item")
     public ResponseEntity<String> returnItemToVendor(@RequestBody HashMap<String, String> requestData){
         Long itemID = Long.valueOf(requestData.get("id"));
@@ -37,7 +43,10 @@ public class VendorController {
 
 
     }
-
+    @Operation(
+            summary = "Return Multiple items to vendor",
+            description = "Allows the return of multiple items to vendor"
+    )
     @PostMapping("/return/items/multiple")
     public ResponseEntity<String> returnItemsToVendor(@RequestBody List<HashMap<String, String>> items){
         items.forEach(item ->{
@@ -50,6 +59,11 @@ public class VendorController {
 
 
     }
+
+    @Operation(
+            summary = "Shows items that have been returned during the last 30 days",
+            description = "Shows items that have been returned during the last 30 days"
+    )
 
     @GetMapping("return/items/last30days")
     public ResponseEntity<List<VendorItem>> itemsReturnedInLastMonth() throws ParseException {
