@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "1037d574-52a4-4268-804d-7b4beda84fb3",
+		"name": "INVENTORY COLLECTION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/items/all",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"Colgate\",\"quantity\":3, \"unitPrice\":200}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/items/add",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add List of Items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"name\": \"Hexa Matress\",\n        \"unitPrice\": 7000.00,\n        \"quantity\": 2\n    },\n    {\n        \"name\": \"Link Monitor\",\n        \"unitPrice\": 300.00,\n        \"quantity\": 2\n    },\n    {\n        \"name\": \"Water Coffee\",\n        \"unitPrice\": 100,\n        \"quantity\": 7\n    }\n\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/items/add/multiple",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"add",
+						"multiple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"itemId\":14,\n\"name\":\"Colgate Maxifresh\",\n\"quantity\":3,\n\"unitPrice\":30\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/items/edit",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit List of Items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {   \"itemId\":1,\n        \"name\": \"Hexa Matress\",\n        \"unitPrice\": 7000.00,\n        \"quantity\": 2\n    },\n    {   \"itemId\":\"2\",\n        \"name\": \"Link Monitor\",\n        \"unitPrice\": 300.00,\n        \"quantity\": 2\n    },\n    {\n        \"itemId\":\"3\",\n        \"name\": \"Water Coffee\",\n        \"unitPrice\": 100,\n        \"quantity\": 7\n    }\n\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/items/edit/multiple",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"edit",
+						"multiple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {   \"itemId\":\"2\",\n        \"name\": \"Link Monitor\",\n        \"unitPrice\": 300.00,\n        \"quantity\": 2\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/items/delete",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete List of Items",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " [{   \"itemId\":7,\n        \"name\": \"Hexa Matress\",\n        \"unitPrice\": 7000.00,\n        \"quantity\": 2\n    },\n    {   \"itemId\":8,\n        \"name\": \"Link Monitor\",\n        \"unitPrice\": 300.00,\n        \"quantity\": 2\n    },\n    {\n        \"itemId\":9,\n        \"name\": \"Water Coffee\",\n        \"unitPrice\": 100,\n        \"quantity\": 7\n    }\n ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/items/delete/multiple",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"items",
+						"delete",
+						"multiple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Items  Added Today",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Move Item to Supermarket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"id\":21,\n    \"remarks\": \"No faults found\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/supermarket/add",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"supermarket",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get SuperMarket Item",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":5}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/supermarket/get",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"supermarket",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Move Multiple Items to Supermarket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[ {\n     \"id\":21,\n    \"remarks\": \"No faults found\"\n    },\n     {\n     \"id\":22,\n    \"remarks\": \"New Shipment to be sent\"\n    },\n     {\n     \"id\":23,\n    \"remarks\": \"Good Condition Object\"\n    }\n\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/supermarket/add/multiple",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"supermarket",
+						"add",
+						"multiple"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Item From SuperMarket",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get SuperMarket Items Added Today",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8080/supermarket/today",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"supermarket",
+						"today"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Multiple Items From Supermarket",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Return Items to Vendor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"id\": 26, \"reason\":\"spoiled furnaces\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/vendor/return/item",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"vendor",
+						"return",
+						"item"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return Multiple Items",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    { \"id\": 26, \"reason\":\"spoiled furnaces\"},\n    { \"id\": 27, \"reason\":\"spoiled furnaces\"},\n    { \"id\": 28, \"reason\":\"spoiled furnaces\"}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Items Added From Vendor Last One Week",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Items Added Within  Last Week",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
