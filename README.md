@@ -37,7 +37,7 @@ Spring Boot API for Inventory Management
   http://localhost:8080/api-docs
   ```
 - For the PostMan Collection Look under
-  [file.pdf](/docs/INVENTORY%20COLLECTION.postman_collection.json)
+  [Collection.json](/docs/INVENTORY%20COLLECTION.postman_collection.json)
 
 ## Tests <br>
 - To run all the unit tests Run the command:<br>
